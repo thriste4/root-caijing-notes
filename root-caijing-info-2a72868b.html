@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>彩经网 · 安稳的阅读入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5ef;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            color: #3b3a36;
+            line-height: 1.75;
+            padding: 2rem 1.5rem;
+            max-width: 860px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* 文章般的呼吸感 */
+        .hero {
+            margin-top: 2.8rem;
+            margin-bottom: 2.4rem;
+            border-bottom: 1px solid #ded7cc;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero p:first-child {
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+            color: #787466;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p:last-child {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #3b3a36;
+            line-height: 1.4;
+            max-width: 640px;
+        }
+
+        .intro {
+            margin-bottom: 2rem;
+            font-size: 1.06rem;
+        }
+
+        .intro p {
+            margin-bottom: 1.4rem;
+        }
+
+        .quote-block {
+            background-color: #efebe4;
+            border-left: 5px solid #b7a78e;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0 2rem;
+            border-radius: 0 8px 8px 0;
+            color: #4d4940;
+            font-style: normal;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .quote-block p {
+            margin: 0.3rem 0;
+        }
+
+        .quote-block strong {
+            color: #6b5d4c;
+        }
+
+        .feature-list {
+            margin: 2rem 0 2.4rem;
+        }
+
+        .feature-list h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.2rem;
+            color: #5b5548;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: #fffffffb;
+            padding: 0.8rem 1.4rem;
+            border-radius: 40px 12px 12px 40px;
+            border: 1px solid #e4ddd2;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-item span {
+            display: inline-block;
+            background: #d8cfc0;
+            color: #2f2d29;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            letter-spacing: 0.03em;
+            min-width: 2.2rem;
+            text-align: center;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .closing {
+            margin-top: 2rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #ded7cc;
+            font-size: 1.02rem;
+            color: #5d5749;
+        }
+
+        .closing a {
+            color: #6b5d4c;
+            text-decoration: none;
+            border-bottom: 1px dashed #b7a78e;
+            transition: border 0.2s;
+        }
+
+        .closing a:hover {
+            border-bottom: 1px solid #5b4f3d;
+        }
+
+        .faq-note {
+            margin-top: 2.6rem;
+            padding: 1.2rem 1.6rem;
+            background: #f0ece4;
+            border-radius: 16px;
+            font-size: 0.95rem;
+        }
+
+        .faq-note summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4e4a3f;
+            padding: 0.25rem 0;
+        }
+
+        .faq-note details p {
+            margin-top: 0.8rem;
+            color: #5b5548;
+            padding-left: 0.2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ded7cc;
+            margin: 1.5rem 0;
+        }
+
+        .small-meta {
+            font-size: 0.82rem;
+            color: #9c9587;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        /* 响应式 */
+        @media (min-width: 600px) {
+            body {
+                padding: 3rem 2.4rem;
+            }
+
+            .hero p:last-child {
+                font-size: 2.1rem;
+            }
+
+            .feature-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+
+            .feature-item {
+                border-radius: 16px;
+                padding: 1rem 1.4rem;
+                flex-direction: row;
+            }
+
+            .quote-block {
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero p:last-child {
+                font-size: 1.4rem;
+            }
+            .feature-item {
+                flex-wrap: wrap;
+                border-radius: 16px;
+            }
+        }
+
+        /* 彩色装饰点 */
+        .accent-dot {
+            color: #b7a78e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 开场短句 -->
+    <div class="hero">
+        <p>—— 一个不急不躁的起点</p>
+        <p>每个页面都该有一扇安稳的门。<br>推开它，便进入一片可以慢慢阅读的角落。</p>
+    </div>
+
+    <!-- 承接段落：从稳定入口说起 -->
+    <div class="intro">
+        <p>
+            网络上的信息来来去去，太多页面急着让人做决定、点链接。但有些时候，我们需要的只是一个安静的入口——不催促、不浮夸，只是把该呈现的内容整理好，放在那里。 
+            <strong>彩经网</strong> 便是基于这样的想法而延续下来：保持简洁的结构，克制地组织信息，让每一次浏览都能回归到内容本身。
+        </p>
+        <p>
+            它不像一个需要“攻占”的站点，更像一本书的扉页、一扇半掩的窗。无论你是首次路过，还是偶尔回来，都能感受到一种平实的稳定。从排版到配色，从文字间隔到区块节奏，都尽可能减少打断——让人可以顺着视线自然移动。
+        </p>
+    </div>
+
+    <!-- 引用块 / 提示框（温和提示） -->
+    <div class="quote-block">
+        <p>⸻ 关于入口，只在意两件事：</p>
+        <p><strong>一是看得清楚。</strong> 不堆砌花哨的修饰，正文的灰度与背景柔和相融，长时间阅读也不刺眼。</p>
+        <p><strong>二是走得从容。</strong> 没有弹窗干扰，没有突然的跳转，每个链接都放在它该在的位置。</p>
+    </div>
+
+    <!-- 特点列表（四个特点） -->
+    <div class="feature-list">
+        <h3>· 让浏览回归基本 ·</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span>01</span>
+                <p>文章式排版，段落间距经过调整，呼吸感自然。</p>
+            </div>
+            <div class="feature-item">
+                <span>02</span>
+                <p>低饱和度米白背景，减少眩光，适配纸质阅读习惯。</p>
+            </div>
+            <div class="feature-item">
+                <span>03</span>
+                <p>卡片、引用块和列表都用细边框与柔和投影，不抢夺注意力。</p>
+            </div>
+            <div class="feature-item">
+                <span>04</span>
+                <p>所有交互元素保持在视觉底层，随手可读，不强迫点击。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 温和的承接 + 场景小段落 -->
+    <p style="margin-bottom: 1.2rem;">
+        当你打开一个页面，最先感受到的不是功能，而是气氛。<a href="https://root-caijing.com" style="color: #6b5d4c; text-decoration: none; border-bottom: 1px dashed #b7a78e;">彩经网</a> 希望营造的气氛就是：不必着急，你随时可以停下来。无论是白天快速扫一眼，还是夜里安静地逐行阅读，这里的结构都不会给你压力。
+    </p>
+
+    <!-- FAQ 摘要（简洁两问） -->
+    <div class="faq-note">
+        <details>
+            <summary>▸ 这个页面主要提供什么？</summary>
+            <p>一个信息清晰、入口稳定的站点。内容以资讯和阅读类为主，不强调即时互动，更偏向于浏览与了解。所有页面都保持一致的视觉基调，减少跳转时的割裂感。</p>
+        </details>
+        <details style="margin-top: 0.8rem;">
+            <summary>▸ 页面风格会经常变化吗？</summary>
+            <p>整体风格会保持米白、文章式、低对比的框架，内部细节会随每次内容方向微调，比如卡片圆角、引用块样式或段落节奏。但核心调性始终是温和、流畅，不搞突然的视觉轰炸。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <p>
+            就这样。没有华丽的收尾，也没有催促你做什么。如果你愿意，可以把这个页面当作一个安静的书签——下次想来的时候，依然在这里。
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.98rem;">
+            沿着相同的入口，随时回到 <a href="https://root-caijing.com">彩经网</a>。
+        </p>
+    </div>
+
+    <!-- 小彩蛋/元信息（不干扰正文） -->
+    <div class="small-meta">
+        <span class="accent-dot">·</span> 页面结构：故事叙述式 · 稳定入口 · 2025
+    </div>
+
+</body>
+</html>
